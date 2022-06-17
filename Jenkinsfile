@@ -1,5 +1,5 @@
 pipeline {
-  agent { label 'master' }
+  agent { label 'Linux' }
   options {
     buildDiscarder(logRotator(numToKeepStr: '5'))
   }
@@ -23,7 +23,7 @@ pipeline {
     stage('Push to Heroku registry') {
       steps {
         sh '''
-          docker tag darinpope/java-web-app:latest registry.heroku.com/$APP_NAME/web
+          docker tag abulkaware/java-web-app:latest registry.heroku.com/$APP_NAME/web
           docker push registry.heroku.com/$APP_NAME/web
         '''
       }
